@@ -1,5 +1,3 @@
-packages/
-Move Mouse/bin/
-Move Mouse/obj/
-UWP Package/
+Move/bin/
+Move/obj/
 .vs/
