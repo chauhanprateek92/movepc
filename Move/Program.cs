@@ -7,7 +7,8 @@ namespace Move
     internal static class Program
     {
         private const string SingleInstanceMutexName = "f45b30b9-9e65-4d33-a2bc-d6ba6a7500bd";
-        private const int MoveIntervalMilliseconds = 60000;
+        private const int IdleThresholdMilliseconds = 60000;
+        private const int PollIntervalMilliseconds = 1000;
 
         [STAThread]
         private static void Main()
@@ -22,10 +23,29 @@ namespace Move
 
                 while (true)
                 {
-                    NudgeCursor();
-                    Thread.Sleep(MoveIntervalMilliseconds);
+                    if (GetIdleTimeMilliseconds() >= IdleThresholdMilliseconds)
+                    {
+                        NudgeCursor();
+                    }
+
+                    Thread.Sleep(PollIntervalMilliseconds);
                 }
             }
+        }
+
+        private static int GetIdleTimeMilliseconds()
+        {
+            var lastInputInfo = new LASTINPUTINFO
+            {
+                cbSize = (uint)Marshal.SizeOf(typeof(LASTINPUTINFO))
+            };
+
+            if (!GetLastInputInfo(ref lastInputInfo))
+            {
+                return 0;
+            }
+
+            return Environment.TickCount - (int)lastInputInfo.dwTime;
         }
 
         private static void NudgeCursor()
@@ -84,7 +104,17 @@ namespace Move
             public IntPtr dwExtraInfo;
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        private struct LASTINPUTINFO
+        {
+            public uint cbSize;
+            public uint dwTime;
+        }
+
         [DllImport("user32.dll", SetLastError = true)]
         private static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
+
+        [DllImport("user32.dll")]
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
     }
 }
