@@ -1,12 +1,12 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Move")]
+[assembly: AssemblyTitle("msteamspc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Move")]
-[assembly: AssemblyCopyright("Copyright © Steve Williams 2017")]
+[assembly: AssemblyProduct("msteamspc")]
+[assembly: AssemblyCopyright("Copyright msteamspc ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace Move
+namespace msteamspc
 {
     internal static class Program
     {

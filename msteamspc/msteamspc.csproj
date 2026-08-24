@@ -7,8 +7,8 @@
     <ProjectGuid>{D1730F60-55C4-4D12-A759-FBC0AC1D5B0F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Move</RootNamespace>
-    <AssemblyName>Move</AssemblyName>
+    <RootNamespace>msteamspc</RootNamespace>
+    <AssemblyName>msteamspc</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
